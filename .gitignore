@@ -1,5 +1,7 @@
 /bin/
+/out/
 .classpath
 .project
-JavaSample.iml
+*.iml
 .idea/
+.settings/
