@@ -3,6 +3,7 @@ package thread.apress.java.threads.concurrency.utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Phaser;
 
@@ -42,7 +43,9 @@ public class PhaserDemo
                                                          // all tasks
                          task.run();
                       };
-         Executors.newSingleThreadExecutor().execute(r);
+         ExecutorService executorService = Executors.newSingleThreadExecutor();
+         executorService.execute(r);
+         executorService.shutdown();
       }
       // allow threads to start and deregister self
       phaser.arriveAndDeregister();
