@@ -1,4 +1,4 @@
-package thread.apress.java.threads.concurrency.utilities;
+package thread.apress.java.threads.concurrency.utilities.synchronizers;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;

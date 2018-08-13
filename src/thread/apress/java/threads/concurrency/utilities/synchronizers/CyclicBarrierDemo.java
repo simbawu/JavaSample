@@ -1,4 +1,4 @@
-package thread.apress.java.threads.concurrency.utilities;
+package thread.apress.java.threads.concurrency.utilities.synchronizers;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
