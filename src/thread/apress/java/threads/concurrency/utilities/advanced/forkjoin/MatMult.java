@@ -1,4 +1,6 @@
-package thread.apress.java.threads.concurrency.utilities.advanced.matmult.v1;
+package thread.apress.java.threads.concurrency.utilities.advanced.forkjoin;
+
+import thread.apress.java.threads.concurrency.utilities.advanced.forkjoin.Matrix;
 
 public class MatMult
 {

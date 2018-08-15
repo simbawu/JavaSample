@@ -1,4 +1,4 @@
-package thread.apress.java.threads.concurrency.utilities.advanced.matmult.v2;
+package thread.apress.java.threads.concurrency.utilities.advanced.forkjoin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
-public class MatMult extends RecursiveAction
+public class MatMultForkJoinTask extends RecursiveAction
 {
    private final Matrix a, b, c;
    private final int row;
 
-   public MatMult(Matrix a, Matrix b, Matrix c)
+   public MatMultForkJoinTask(Matrix a, Matrix b, Matrix c)
    {
       this(a, b, c, -1);
    }
 
-   public MatMult(Matrix a, Matrix b, Matrix c, int row)
+   public MatMultForkJoinTask(Matrix a, Matrix b, Matrix c, int row)
    {
       if (a.getCols() != b.getRows())
          throw new IllegalArgumentException("rows/columns mismatch");
@@ -31,16 +31,16 @@ public class MatMult extends RecursiveAction
    {
       if (row == -1)
       {
-         List<MatMult> tasks = new ArrayList<>();
+         List<MatMultForkJoinTask> tasks = new ArrayList<>();
          for (int row = 0; row < a.getRows(); row++)
-            tasks.add(new MatMult(a, b, c, row));
+            tasks.add(new MatMultForkJoinTask(a, b, c, row));
          invokeAll(tasks);
       }
       else
          multiplyRowByColumn(a, b, c, row);
    }
 
-   public static void multiplyRowByColumn(Matrix a, Matrix b, Matrix c, 
+   public static void multiplyRowByColumn(Matrix a, Matrix b, Matrix c,
                                           int row)
    {
       for (int j = 0; j < b.getCols(); j++)
@@ -80,7 +80,7 @@ public class MatMult extends RecursiveAction
       dump(b);
       Matrix c = new Matrix(2, 2);
       ForkJoinPool pool = new ForkJoinPool();
-      pool.invoke(new MatMult(a, b, c));
+      pool.invoke(new MatMultForkJoinTask(a, b, c));
       dump(c);
    }
 }

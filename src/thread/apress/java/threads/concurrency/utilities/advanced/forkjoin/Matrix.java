@@ -1,4 +1,4 @@
-package thread.apress.java.threads.concurrency.utilities.advanced.matmult.v2;
+package thread.apress.java.threads.concurrency.utilities.advanced.forkjoin;
 
 public class Matrix
 {
