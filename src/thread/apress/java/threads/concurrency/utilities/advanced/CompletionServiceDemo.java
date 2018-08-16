@@ -11,15 +11,15 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-public class CSDemo
+public class CompletionServiceDemo
 {
    public static void main(String[] args) throws Exception
    {
       ExecutorService es = Executors.newFixedThreadPool(10);
       CompletionService<BigDecimal> cs = 
          new ExecutorCompletionService<BigDecimal>(es);
-      cs.submit(new CalculateE(17));
       cs.submit(new CalculateE(170));
+      cs.submit(new CalculateE(17));
       Future<BigDecimal> result = cs.take();
       System.out.println(result.get());
       System.out.println();
